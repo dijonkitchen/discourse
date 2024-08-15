@@ -22,9 +22,7 @@ import { forceDropdownForMenuPanels as glimmerForceDropdownForMenuPanels } from 
 import { addGlobalNotice } from "discourse/components/global-notice";
 import { headerButtonsDAG } from "discourse/components/header";
 import { headerIconsDAG } from "discourse/components/header/icons";
-import MountWidget, {
-  addWidgetCleanCallback,
-} from "discourse/components/mount-widget";
+import { addWidgetCleanCallback } from "discourse/components/mount-widget";
 import { addPluginOutletDecorator } from "discourse/components/plugin-connector";
 import {
   addPluginReviewableParam,
@@ -1150,9 +1148,7 @@ class PluginApi {
    * and returns a hash of values to pass to attach
    *
    **/
-  addHeaderPanel() {
-    // TODO removing this API will actually break people code
-  }
+  addHeaderPanel() {} // TODO removing this API will actually break people code
 
   /**
    * Adds a pluralization to the store
@@ -2114,21 +2110,8 @@ class PluginApi {
    * ```
    *
    **/
-  addToHeaderIcons(icon) {
-    deprecated(
-      "addToHeaderIcons has been deprecated. Use api.headerIcons instead.",
-      {
-        id: "discourse.add-header-icons",
-        url: "https://meta.discourse.org/t/296544",
-      }
-    );
-
-    this.headerIcons.add(
-      icon,
-      <template><MountWidget @widget={{icon}} /></template>,
-      { before: "search" }
-    );
-  }
+  // eslint-disable-next-line no-unused-vars
+  addToHeaderIcons(icon) {} // TODO removing this API will actually break people code
 
   /**
    * Set a callback function to specify the URL used in the home logo.
@@ -3253,6 +3236,7 @@ class PluginApi {
     addAboutPageActivity(name, func);
   }
 
+  // eslint-disable-next-line no-unused-vars
   #deprecatedWidgetOverride(widgetName, override) {
     // insert here the code to handle widget deprecations, e.g. for the header widgets we used:
     // if (DEPRECATED_HEADER_WIDGETS.includes(widgetName)) {
