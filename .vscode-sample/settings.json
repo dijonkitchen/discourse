@@ -1,12 +1,38 @@
 {
-  "[gjs]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[gts]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  // Our object-literal-decorator syntax is unsupported by the typescript parser
+  "javascript.validate.enable": false,
+
+  // Enable gjs support for eslint
   "eslint.validate": [
     "glimmer-js",
-    "glimmer-ts"
-  ]
+  ],
+
+  // Formatter configuration:
+  "[scss]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[glimmer-js]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[ruby]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ruby-syntax-tree.vscode-syntax-tree"
+  },
+  "[handlebars]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // eslint fix on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+
+  "task.autoDetect": "off"
 }

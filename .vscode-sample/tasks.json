@@ -1,12 +1,70 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Prepare discourse",
-            "type": "shell",
-            "command": "cd /home/discourse/workspace/discourse && bundle install && yarn && bin/rake db:migrate"
-        }, 
-    ], 
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "deps/yarn",
+      "type": "shell",
+      "command": "yarn install",
+      "presentation": {
+        "reveal": "always",
+        "group": "deps",
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "deps/bundle",
+      "type": "shell",
+      "command": "bundle install",
+      "presentation": {
+        "reveal": "always",
+        "group": "deps",
+        "close": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "deps/all",
+      "dependsOn": [
+        "deps/yarn",
+        "deps/bundle"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "dev/migrate",
+      "type": "shell",
+      "command": "bin/rake db:create db:migrate",
+      "options": {
+        "env":{
+          "SKIP_MULTISITE": "1",
+          "SKIP_TEST_DATABASE": "1"
+        }
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "dev/server",
+      "type": "shell",
+      "command": "bin/ember-cli -u",
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "shortcuts/boot-dev",
+      "dependsOn": [
+        "deps/all",
+        "dev/migrate",
+        "dev/server"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ], 
 }
