@@ -14,6 +14,7 @@ fork do
   exec "sudo nohup /sbin/boot"
 end
 
+system "mkdir -p .vscode", exception: true
 system "cp -n .vscode-sample/* .vscode", exception: true
 
 puts <<~TXT
