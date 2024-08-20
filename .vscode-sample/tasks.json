@@ -56,7 +56,7 @@
       "label": "dev/ensure-admin",
       "type": "shell",
       "command": "bin/rails",
-      "args":["runner", "User.create!(username: 'admin', password: 'DiscourseAdminPassword', admin: true).activate if User.human_users.count == 0"],
+      "args":["runner", "User.create!(username: \"admin\", password: \"DiscourseAdminPassword\", email: \"admin@example.com\", admin: true).activate if User.human_users.count == 0"],
       "problemMatcher": [],
       "isBackground": true
     },
